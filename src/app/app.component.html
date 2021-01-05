@@ -9,20 +9,24 @@
         <span class="p-input-icon-left p-mb-2 p-mb-md-0">
           <i class="pi pi-search"></i>
           <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
-      </span>
+        </span>
       </div>
     </ng-template>
     <ng-template let-product pTemplate="gridItem">
-      <div class="p-col-12">
+      <div class="p-col-4">
         <div class="product-list-item">
           <div class="product-list-detail">
-            <div class="product-name">{{product.name}}</div>
-            <div class="product-description">{{product.createDate}}</div>
-            <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
-            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.category}}</span> -->
+            <div class="product-name">{{product.symbol}}</div>
+            <div class="product-description">{{product.name}}</div>
+            <div class="product-description">{{product.lastUpdated | date : 'dd MMMM'}}</div>
+            <div class="product-description">{{product.seriesDateFa }}</div>
+            <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+            <i class="pi pi-chart-line product-category-icon"></i><span
+              [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange1h.toFixed(1)}}%</span>
           </div>
           <div class="product-list-action">
-            <span class="product-price">${{product.coinPriceInRial}}</span>
+            <span class="product-price" dir="rtl">{{product.coinPriceInRial.toFixed() | toman | c3}} تومان</span>
+            <span class="product-price">${{product.price.toFixed(1) | c3}}</span>
             <!-- <p-button icon="pi pi-shopping-cart" label="Add to Cart"
               [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
             <span
@@ -31,27 +35,4 @@
         </div>
       </div>
     </ng-template>
-    <!-- <ng-template let-product pTemplate="gridItem">
-      <div class="p-col-12 p-md-4">
-        <div class="product-grid-item card">
-          <div class="product-grid-item-top">
-            <div>
-              <i class="pi pi-tag product-category-icon"></i>
-              <span class="product-category">{{product.category}}</span>
-            </div>
-            <span
-              [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-          </div>
-          <div class="product-grid-item-content">
-            <div class="product-name">{{product.name}}</div>
-            <div class="product-description">{{product.description}}</div>
-            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
-          </div>
-          <div class="product-grid-item-bottom">
-            <span class="product-price">${{product.price}}</span>
-            <p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-          </div>
-        </div>
-      </div>
-    </ng-template> -->
   </p-dataView>

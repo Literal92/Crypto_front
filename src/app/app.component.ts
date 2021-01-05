@@ -24,13 +24,14 @@ export class AppComponent {
 
   
   ngOnInit(): void {
+    this.products = [];
     this.productService.getCrypto().subscribe(data =>{
       this.products = data;
     });
     this.items = [
       {
         label: 'Crypto',
-        icon: 'pi pi-fw pi-chart-line',
+        icon: 'pi pi-fw pi-chart-bar',
       }
     ];
   }

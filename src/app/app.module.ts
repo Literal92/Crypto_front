@@ -13,11 +13,16 @@ import { DialogModule } from 'primeng/dialog';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { HttpClientModule } from '@angular/common/http';
+import { Comma3Pipe, TomanPricePipe } from '../assets/shared/common/localize.pipe'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TomanPricePipe,
+    Comma3Pipe
   ],
+  exports: [TomanPricePipe,
+    Comma3Pipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
