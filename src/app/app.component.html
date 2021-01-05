@@ -1,7 +1,7 @@
 <p-menubar [model]="items">
 </p-menubar>
 <div class="card">
-  <p-dataView #dv [value]="products" [paginator]="true" [rows]="9" filterBy="name" [sortField]="sortField"
+  <p-dataView #dv [value]="products" [paginator]="true" [rows]="9" filterBy="symbol" [sortField]="sortField"
     [sortOrder]="sortOrder" layout="grid">
     <ng-template pTemplate="header">
       <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
@@ -23,6 +23,10 @@
             <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
             <i class="pi pi-chart-line product-category-icon"></i><span
               [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange1h.toFixed(1)}}%</span>
+            <i class="pi pi-chart-line product-category-icon"></i><span
+              [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange24h.toFixed(1)}}%</span>
+            <i class="pi pi-chart-line product-category-icon"></i><span
+              [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange7d.toFixed(1)}}%</span>
           </div>
           <div class="product-list-action">
             <span class="product-price" dir="rtl">{{product.coinPriceInRial.toFixed() | toman | c3}} تومان</span>
