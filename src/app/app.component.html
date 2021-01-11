@@ -21,12 +21,12 @@
             <div class="product-description">{{product.lastUpdated | date : 'dd MMMM'}}</div>
             <div class="product-description">{{product.seriesDateFa }}</div>
             <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
-            <i class="pi pi-chart-line product-category-icon"></i><span
+            Hourly: <span
               [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange1h.toFixed(1)}}%</span>
-            <i class="pi pi-chart-line product-category-icon"></i><span
-              [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange24h.toFixed(1)}}%</span>
-            <i class="pi pi-chart-line product-category-icon"></i><span
-              [ngClass]="( product.percentChange1h >= 0)?'product-category': 'product-category_red'">{{product.percentChange7d.toFixed(1)}}%</span>
+            Daily: <span
+              [ngClass]="( product.percentChange24h >= 0)?'product-category': 'product-category_red'">{{product.percentChange24h.toFixed(1)}}%</span>
+            Weekly: <span
+              [ngClass]="( product.percentChange7d >= 0)?'product-category': 'product-category_red'">{{product.percentChange7d.toFixed(1)}}%</span>
           </div>
           <div class="product-list-action">
             <span class="product-price" dir="rtl">{{product.coinPriceInRial.toFixed() | toman | c3}} تومان</span>
